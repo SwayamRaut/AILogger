@@ -1,50 +1,130 @@
-# Welcome to your Expo app 👋
+# AILogger
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+React Native Demo Assignment: AI Sales Visit Logger
 
-## Get started
+A mobile app built for field sales reps to log their customer visits and get AI powered follow up summaries. Built with React Native and Expo.
 
-1. Install dependencies
+ 
 
-   ```bash
-   npm install
-   ```
+## What this app does
 
-2. Start the app
+ 
 
-   ```bash
-   npx expo start
-   ```
+Sales reps can log visits with customers, track meeting notes, and use AI to generate structured summaries from their raw notes. Everything saves locally first so it works offline, then syncs to Firebase when there is internet.
 
-In the output, you'll find options to open the app in a
+ 
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## How to set it up
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+ 
 
-## Get a fresh project
+Make sure you have Node.js installed and an Expo account. You also need Android Studio if you want to run it on an emulator.
 
-When you're ready, run:
+ 
 
-```bash
-npm run reset-project
-```
+1. Clone this repo and go into the project folder
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+ 
 
-## Learn more
+git clone https://github.com/YOUR_USERNAME/AILogger.git
 
-To learn more about developing your project with Expo, look at the following resources:
+cd AILogger
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+ 
 
-## Join the community
+2. Install all the dependencies
 
-Join our community of developers creating universal apps.
+ 
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm install
+
+ 
+
+3. Install the Expo CLI if you do not have it
+
+ 
+
+npm install -g eas-cli
+
+ 
+
+4. Build the development version for Android
+
+ 
+
+eas build --platform android --profile development
+
+ 
+
+5. Once the build finishes, download the APK and install it on your emulator or phone
+
+ 
+
+6. Start the dev server
+
+ 
+
+npx expo start --dev-client
+
+ 
+
+7. Open the app on your device or emulator
+
+ 
+
+## Test account
+
+ 
+
+Email: test@test.com
+
+Password: test123
+
+ 
+
+## Tech stack
+
+ 
+
+React Native with Expo for the mobile app. TypeScript for type safety. AsyncStorage for local persistence. Firebase Firestore for cloud sync. Firebase Cloud Functions for the AI integration which calls the Claude API to generate meeting summaries.
+
+ 
+
+## Project structure
+
+ 
+
+The app folder contains all the screens. index.tsx is the login screen, homepage.tsx shows all visit logs, createlog.tsx is the form to create a new visit, and viewlog.tsx shows the full details where you can also edit and generate AI summaries.
+
+ 
+
+The hooks folder has the business logic. firebase.ts handles the Firebase connection, useSync.ts handles syncing visits to Firestore, and ai-helper-logic.ts handles calling the AI to generate summaries.
+
+ 
+
+## Features
+
+ 
+
+You can create visit logs with customer name, contact person, location, date, meeting notes, outcome status, and follow up date. Everything saves to the phone first so it works without internet.
+
+ 
+
+Each visit syncs to Firebase and shows its status as draft, syncing, synced, or failed. If sync fails you can retry it.
+
+ 
+
+The AI summary feature takes your raw meeting notes and generates a structured breakdown with meeting summary, pain points, action items, and recommended next steps.
+
+ 
+
+You can edit any visit from the detail screen. All fields become editable and changes save locally then sync to Firebase.
+
+ 
+
+## Notes
+
+ 
+
+The Firestore database is currently in test mode for development purposes. In a production environment this would use proper security rules to restrict access based on authenticated users.
+
